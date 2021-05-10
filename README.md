@@ -14,4 +14,14 @@ Datadriven Excel file usage
 
 ```java
 
+// Add a list of Map for getting list of data and get data
+protected List<Map<String, String>> data;
+
+protected ExcelDataReader reader = new ExcelDataReader();
+
+data = reader.getDataFromExcel(FILE_PATH, "SheetName", "Column Names", "Filter Name", "Filter Variable");
+
+for (Map<String, String> entry : data) {
+	entry.get("Column Name");
+}
 ```
