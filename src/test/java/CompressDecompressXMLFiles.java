@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+// Compressing Large XML File to gz
 public static void compressXMLFile(String file, String gzipFile) {
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -25,8 +26,9 @@ public static void compressXMLFile(String file, String gzipFile) {
 		}
 	}
 
-	@SuppressWarnings("resource")
-	public static String decompressXMLFile(String gzipFile) {
+// For Decompressing XML as a String and return
+@SuppressWarnings("resource")
+public static String decompressXMLFile(String gzipFile) {
 		try {
 			FileInputStream fis = new FileInputStream(gzipFile);
 			GZIPInputStream gis = new GZIPInputStream(fis);
@@ -42,3 +44,20 @@ public static void compressXMLFile(String file, String gzipFile) {
 			throw new RuntimeException("Failed to unzip content", e);
 		}
 	}
+
+// For decompressing XML to a file
+public static void decompressGzipFile(String gzipFile, String newFile) {
+		try {
+			FileInputStream fis = new FileInputStream(gzipFile);
+			GZIPInputStream gis = new GZIPInputStream(fis);
+			FileOutputStream fos = new FileOutputStream(newFile);
+			byte[] buffer = new byte[1024];
+			int len;
+			while ((len = gis.read(buffer)) != -1) {
+				fos.write(buffer, 0, len);
+			}
+			fos.close();
+			gis.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
