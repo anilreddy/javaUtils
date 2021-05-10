@@ -25,3 +25,8 @@ for (Map<String, String> entry : data) {
 	entry.get("Column Name");
 }
 ```
+For updating data to Excel file
+
+```java
+reader.updateDataIntoExcel(FILE_PATH, sheetName, updateColName, updateValue, filterColumn, filterVariable)
+```
