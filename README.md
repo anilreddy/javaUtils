@@ -19,7 +19,7 @@ protected List<Map<String, String>> data;
 
 protected ExcelDataReader reader = new ExcelDataReader();
 
-data = reader.getDataFromExcel(FILE_PATH, "SheetName", "Column Names", "Filter Name", "Filter Variable");
+data = reader.getDataFromExcel(FILE_PATH, "SheetName", "Column Names" or "'*' for all", "Filter Name", "Filter Variable");
 
 for (Map<String, String> entry : data) {
 	entry.get("Column Name");
